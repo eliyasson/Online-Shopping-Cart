@@ -21,6 +21,12 @@ function App() { //This declares a functional component named App.
     setProduct(e.target.value);
   }
 
+  const deleteButton = (item) => {
+
+    const newArray = productsList.filter((product) => product !== item);
+    setProductsList(newArray);
+  }
+
 
   return (
     <div className="App">
@@ -30,7 +36,9 @@ function App() { //This declares a functional component named App.
       <button onClick={handleAddProduct}>Add Product</button>
       <ul>
         {productsList.map((product) =>{
-          return <li>{product}</li>
+          return <li>{product}
+          <button onClick={() => deleteButton(product)}>x</button>
+          </li>
         })}
       </ul>
     </div>
