@@ -15,6 +15,11 @@ function App() { //This declares a functional component named App.
   /*This function is called when the "Add Product" button is clicked. 
   It updates the productsList state variable by adding the current value of product to the end of the array.*/
   const handleAddProduct = () =>{
+    if(!product || !price) {
+      alert('Please enter both item and price.');
+      return;
+    }
+
     const newProduct = {
       id: Math.floor(Math.random() * 1000),
       name: product,
@@ -28,6 +33,14 @@ function App() { //This declares a functional component named App.
   /*This function is called whenever the input field value changes. 
   It updates the product state variable with the new value entered by the user. */
   const updateChange =(e)=> {
+    /*const handleProductChange = (e) => {
+      setProduct(e.target.value);
+    }
+  
+    const handlePriceChange = (e) => {
+      setPrice(e.target.value);
+    }*/
+
     if(e.target.name === "product"){
       setProduct(e.target.value);
     } else if (e.target.name === "price") {
@@ -64,7 +77,7 @@ function App() { //This declares a functional component named App.
       
       <ul>
         {productsList.map((product) =>{
-          return <li>{product.name}
+          return <li key={product.id}>{product.name}
           <button onClick={() => detailsClick(product)}>Details</button>
           </li>
         })}
