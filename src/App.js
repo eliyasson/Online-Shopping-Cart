@@ -1,5 +1,9 @@
 import React, { useState } from 'react'; //These lines import the necessary modules
 import './App.css';
+import AddProduct from './AddProduct';
+import ProductList from './ProductList';
+import ShowDetail from './ShowDetail';
+import CartList from './CartList';
 
 function App() { //This declares a functional component named App.
 
@@ -65,44 +69,12 @@ function App() { //This declares a functional component named App.
 
   return (
     <div className="App">
-      <h3 className="heading">Add Product</h3>
-      <div className="form-container">
-        <input type="text" value={product} placeholder='Product Name' onChange={handleProductChange}/><br />
-        <input type="number" value={price} placeholder='Price' onChange={handlePriceChange}/><br />
-        <button className="add-button" onClick={handleAddProduct}>Add Product</button>
-      </div>
-      
-      <ul  className="product-list">
-        {productsList.map((product) => (
-          <li key={product.id} className="product-item">
-            <span className="product-name">{product.name}</span>
-            <button className="detail-button" onClick={() => handleDetailsClick(product)}>Details</button>
-          </li>
-        ))}
-      </ul>
 
-      {showDetails && (
-        <div className="detail-container">
-          <h4 className="detail-heading">Product Details</h4>
-          <p className="detail-name">{showDetails.name}</p>
-          <p className="detail-price">{showDetails.price}€</p>
-          <button className="add-to-cart-button" onClick={() => handleAddToCart(showDetails)}>Add to Cart</button>
-          <button className="close-button" onClick={handleCloseClick}>Close</button>
-        </div>
-      )} 
+      <AddProduct product={product} price={price} handleProductChange={handleProductChange} handlePriceChange={handlePriceChange} handleAddProduct={handleAddProduct}/>
+      <ProductList productsList={productsList} handleDetailsClick={handleDetailsClick} /> 
+      <ShowDetail showDetails={showDetails} handleAddToCart={handleAddToCart} handleCloseClick={handleCloseClick}/>
+      <CartList cart={cart} handleRemoveClick={handleRemoveClick}/>
 
-      <div className="cart-container">
-        <h4 className="cart-heading">My Shopping Cart</h4>
-        <ul className="cart-list">
-          {cart.map((product) => ( 
-            <li key={product.id} className="cart-item">
-              <span className="cart-name">{product.name}</span>
-              <span className="cart-price">{product.price}€</span>
-              <button className="remove-button" onClick={() => handleRemoveClick(product.id)}>Remove</button>
-            </li>
-          ))}
-        </ul>
-      </div>
 
     </div>
   );
