@@ -3,7 +3,7 @@ import React, { useState, useEffect, } from 'react';
 function CartList({cart, handleRemoveClick}) {
     return ( 
         <div className="cart-container">
-            {cart.length > 0 && <h4 className="cart-heading">My Shopping Cart</h4>} {/* onditional rendering*/}
+            {cart.length > 0 && <h4 className="cart-heading">My Shopping Cart</h4>} {/* conditional rendering*/}
             <ul className="cart-list">
                 {cart.map((product) => ( 
                     <li key={product.id} className="cart-item">
