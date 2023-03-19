@@ -1,6 +1,6 @@
 import React, { useState, useEffect, } from 'react';
 
-const ShowDetail = (showDetails, handleAddToCart, handleCloseClick) => {
+function ShowDetail({showDetails, handleAddToCart, handleCloseClick}) {
     return ( 
         <div>
             {showDetails && (

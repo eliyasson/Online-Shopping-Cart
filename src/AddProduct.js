@@ -1,6 +1,6 @@
 import React, { useState, useEffect, } from 'react';
 
-const AddProduct = ({product, price, handleProductChange, handlePriceChange, handleAddProduct}) => {
+function AddProduct({product, price, handleProductChange, handlePriceChange, handleAddProduct}) {
     return ( 
         <div>
             <h3 className="heading">Add Product</h3>

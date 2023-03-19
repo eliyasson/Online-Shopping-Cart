@@ -1,6 +1,6 @@
 import React, { useState, useEffect, } from 'react';
 
-const ProductList = (productsList, handleDetailsClick) => {
+function ProductList ({productsList, handleDetailsClick})  {
     return ( 
         <div>
             <ul  className="product-list">

@@ -1,11 +1,11 @@
-import React, { useState } from 'react'; //These lines import the necessary modules
+import React, { useState } from 'react'; 
 import './App.css';
 import AddProduct from './AddProduct';
 import ProductList from './ProductList';
 import ShowDetail from './ShowDetail';
 import CartList from './CartList';
 
-function App() { //This declares a functional component named App.
+function App() { 
 
   //state variables using the useState hook:
   const [product, setProduct] = useState(""); //product: stores the current value of the input field for the product name.
@@ -65,6 +65,7 @@ function App() { //This declares a functional component named App.
 
   const handleAddToCart = (product) => { 
     setCart([...cart, product]);
+    setShowDetails(false);
   }
 
   return (

@@ -1,9 +1,9 @@
 import React, { useState, useEffect, } from 'react';
 
-const CartList = (cart, handleRemoveClick) => {
+function CartList({cart, handleRemoveClick}) {
     return ( 
         <div className="cart-container">
-            <h4 className="cart-heading">My Shopping Cart</h4>
+            {cart.length > 0 && <h4 className="cart-heading">My Shopping Cart</h4>} {/* onditional rendering*/}
             <ul className="cart-list">
                 {cart.map((product) => ( 
                     <li key={product.id} className="cart-item">
