@@ -8,13 +8,12 @@ import CartList from './CartList';
 function App() { 
 
   //state variables using the useState hook:
-  const [product, setProduct] = useState(""); //product: stores the current value of the input field for the product name.
+   //product: stores the current value of the input field for the product name.
   const [productsList, setProductsList] = useState([]); //store the list of products as an array
 
-  const [price, setPrice] = useState("");
   const [priceList, setPriceList] = useState([]);
-  
-  const [showDetails, setShowDetails] = useState();
+
+  const [detailProduct, setDetailProduct] = useState();
   const [cart, setCart] = useState([]);
 
   //Create a function to handle the button click event that will add the new product to the list:
@@ -41,20 +40,14 @@ function App() {
 
   /*This function is called whenever the input field value changes. 
   It updates the product state variable with the new value entered by the user. */
-  const handleProductChange = (e) => {
-    setProduct(e.target.value);
-  }
-
-  const handlePriceChange = (e) => {
-    setPrice(e.target.value);
-  }
+  
 
   const handleDetailsClick = (product) => {
-    setShowDetails(product);
+    setDetailProduct(product);
   }
 
   const handleCloseClick = () => { 
-    setShowDetails(false);
+    setDetailProduct(false);
     setProduct("");
     setPrice("");
   }
@@ -65,15 +58,21 @@ function App() {
 
   const handleAddToCart = (product) => { 
     setCart([...cart, product]);
-    setShowDetails(false);
+    setDetailProduct(false);
   }
+
+  const handleDeleteProduct = (id) => {
+    setProductsList(productsList.filter(item => item.id !== id));
+    setPriceList(priceList.filter((item, index) => item.id !== id));
+  }
+  
 
   return (
     <div className="App">
 
-      <AddProduct product={product} price={price} handleProductChange={handleProductChange} handlePriceChange={handlePriceChange} handleAddProduct={handleAddProduct}/>
-      <ProductList productsList={productsList} handleDetailsClick={handleDetailsClick} /> 
-      <ShowDetail showDetails={showDetails} handleAddToCart={handleAddToCart} handleCloseClick={handleCloseClick}/>
+      <AddProduct handleAddProduct={handleAddProduct}/>
+      <ProductList productsList={productsList} handleDetailsClick={handleDetailsClick}  handleDeleteProduct={handleDeleteProduct}/> 
+      <ShowDetail showDetails={detailProduct} handleAddToCart={handleAddToCart} handleCloseClick={handleCloseClick}/>
       <CartList cart={cart} handleRemoveClick={handleRemoveClick}/>
 
 
