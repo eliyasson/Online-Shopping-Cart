@@ -1,14 +1,16 @@
 .App {
+  
   display: flex;
   flex-direction: column;
   justify-content: start;
-  width: 520px;
+  width: 90%;
+  max-width: 800px;
   min-height: 600px;
-  background: #161a2b;
   text-align: center;
-  margin: 128px auto;
+  margin:auto;
   border-radius: 10px;
   padding-bottom: 32px;
   background: linear-gradient(to right, #00AAFF, #00FF6C);
 }
+
 

@@ -1,4 +1,4 @@
-import React, { useState, useEffect, } from 'react';
+
 
 function ShowDetail({detailProduct, handleAddToCart, handleCloseClick}) {
     return ( 

@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+
 
 function CartList({cart, handleRemoveClick}) {
     return ( 
